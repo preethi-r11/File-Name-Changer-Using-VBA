@@ -1,0 +1,35 @@
+Attribute VB_Name = "Module1"
+Sub FetchNames()
+
+Dim mypath As String
+Dim myfile As String
+mypath = "C:\Users\113768\Desktop\File Name changer\Files\"
+
+myfile = Dir(mypath & "*.*")
+
+r = 2
+Do While myfile <> ""
+  Cells(r, 1).Value = myfile
+  r = r + 1
+  myfile = Dir
+  
+Loop
+
+End Sub
+
+
+
+Sub Renamefiles()
+
+Dim mypath As String
+mypath = "C:\Users\113768\Desktop\File Name changer\Files\"
+
+r = 2
+Do Until IsEmpty(Cells(r, 1)) And IsEmpty(Cells(r, 2))
+     Name mypath & Cells(r, 1).Value As mypath & Cells(r, 2).Value
+     r = r + 1
+
+Loop
+
+MsgBox "File name are successfully Renamed"
+End Sub
